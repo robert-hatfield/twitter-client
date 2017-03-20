@@ -43,6 +43,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6227446E1E808B4E005C12F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6297ED9F1E80540E006C564D /* User.swift */,
+				6297ED9D1E8053EF006C564D /* Tweet.swift */,
+				6227446A1E806D6A005C12F9 /* JSONParser.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6227446F1E808B56005C12F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6297ED921E803F55006C564D /* LaunchScreen.storyboard */,
+				6297ED8D1E803F55006C564D /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		622744701E808B5C005C12F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6227446C1E80780B005C12F9 /* HomeTimelineViewController.swift */,
+				6297ED891E803F55006C564D /* AppDelegate.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		6297ED7D1E803F54006C564D = {
 			isa = PBXGroup;
 			children = (
@@ -63,14 +91,10 @@
 		6297ED881E803F54006C564D /* TwitterClient */ = {
 			isa = PBXGroup;
 			children = (
-				6227446C1E80780B005C12F9 /* HomeTimelineViewController.swift */,
-				6297ED9D1E8053EF006C564D /* Tweet.swift */,
-				6297ED9F1E80540E006C564D /* User.swift */,
-				6227446A1E806D6A005C12F9 /* JSONParser.swift */,
-				6297ED891E803F55006C564D /* AppDelegate.swift */,
-				6297ED8D1E803F55006C564D /* Main.storyboard */,
+				622744701E808B5C005C12F9 /* Controller */,
+				6227446F1E808B56005C12F9 /* View */,
+				6227446E1E808B4E005C12F9 /* Model */,
 				6297ED901E803F55006C564D /* Assets.xcassets */,
-				6297ED921E803F55006C564D /* LaunchScreen.storyboard */,
 				6297ED951E803F55006C564D /* Info.plist */,
 			);
 			path = TwitterClient;

@@ -10,6 +10,8 @@ import UIKit
 
 class HomeTimelineViewController: UIViewController, UITableViewDataSource {
     
+    var datasource = [Tweet]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,18 +24,20 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
                 guard let tweets = tweets else { fatalError("Tweets came back as nil.") }
                 for tweet in tweets {
                     print(tweet.text)
+                    datasource.append(tweet)
                 }
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return datasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Indexpath: \(indexPath.row)"
+        cell.textLabel?.text = datasource[indexPath.row].text
+        cell.detailTextLabel?.text = datasource[indexPath.row].user?.name
         return cell
     }
 }
