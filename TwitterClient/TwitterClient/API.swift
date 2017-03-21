@@ -79,7 +79,7 @@ class API {
     
     // Get status for user's home timeline
     private func updateTimeline(callback: @escaping TweetsCallback) {
-        let url = URL(string: "https://https://api.twitter.com/1.1/statuses/home_timeline.json")
+        let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
             
@@ -103,6 +103,8 @@ class API {
                             callback(tweets)
                         }
                     })
+                case 403:
+                    print("Error 403: Forbidden. Please verify that your password is entered correctly in Settings > Twitter")
                 default:
                     print("Error in response from server: \(response.statusCode)")
                     callback(nil)
