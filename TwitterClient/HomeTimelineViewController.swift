@@ -23,9 +23,9 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         JSONParser.tweetsFrom(data: JSONParser.sampleJSONData) { (success, tweets) in
             if(success) {
                 guard let tweets = tweets else { fatalError("Tweets came back as nil.") }
+                datasource = tweets // assigning this in a single operation to improve Big O performance
                 for tweet in tweets {
                     print(tweet.text)
-                    datasource.append(tweet)
                 }
             }
         }
