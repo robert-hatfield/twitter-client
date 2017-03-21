@@ -114,8 +114,19 @@ class API {
     }
     
     // Get tweets - this public method will provide access to the private methods above
-    func getTweets(callback: TweetsCallback) {
-        
+    func getTweets(callback: @escaping TweetsCallback) {
+        if self.account == nil {
+            login(callback: { (account) in
+                if let account = account {
+                    self.account = account
+                    self.updateTimeline(callback: { (tweets) in
+                        callback(tweets)
+                    })
+                }
+            })
+        } else {
+            self.updateTimeline(callback: callback)
+        }
     }
     
 }
