@@ -66,7 +66,8 @@ class API {
                     if let userJSON = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                         let user = User(json: userJSON)
                         callback(user)
-                    }default:
+                    }
+                default:
                     print("Error: response came back with statusCode: \(response.statusCode)")
                     callback(nil)
                 }
@@ -76,8 +77,39 @@ class API {
         
     }
     
-    // Post to timeline
+    // Get status for user's home timeline
     private func updateTimeline(callback: @escaping TweetsCallback) {
+        let url = URL(string: "https://https://api.twitter.com/1.1/statuses/home_timeline.json")
+        
+        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
+            
+            request.account = self.account
+            
+            request.perform(handler: { (data, response, error) in
+                
+                if let error = error {
+                    print ("Error: Unable to request user's home timeline - \(error.localizedDescription)")
+                    callback(nil)
+                    return
+                }
+                
+                guard let response = response else { callback(nil); return }
+                guard let data = data else { callback(nil); return }
+                
+                switch response.statusCode {
+                case 200...299:
+                    JSONParser.tweetsFrom(data: data, callback: { (success, tweets) in
+                        if success {
+                            callback(tweets)
+                        }
+                    })
+                default:
+                    print("Error in response from server: \(response.statusCode)")
+                    callback(nil)
+                }
+                
+            })
+        }
         
     }
     
