@@ -46,6 +46,7 @@
 		6227446E1E808B4E005C12F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6297ED9B1E805396006C564D /* tweet.json */,
 				6297ED9F1E80540E006C564D /* User.swift */,
 				6297ED9D1E8053EF006C564D /* Tweet.swift */,
 				6227446A1E806D6A005C12F9 /* JSONParser.swift */,
@@ -74,7 +75,6 @@
 		6297ED7D1E803F54006C564D = {
 			isa = PBXGroup;
 			children = (
-				6297ED9B1E805396006C564D /* tweet.json */,
 				6297ED881E803F54006C564D /* TwitterClient */,
 				6297ED871E803F54006C564D /* Products */,
 			);
