@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTimelineViewController: UIViewController, UITableViewDataSource {
+class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var datasource = [Tweet]()
     
@@ -18,6 +18,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         JSONParser.tweetsFrom(data: JSONParser.sampleJSONData) { (success, tweets) in
             if(success) {
@@ -39,5 +40,9 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = datasource[indexPath.row].text
         cell.detailTextLabel?.text = datasource[indexPath.row].user?.name
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
 }
