@@ -10,9 +10,24 @@ import Foundation
 import Accounts
 import Social
 
-typealias AccountCallback = (ACAccount?) -> ()
-typealias UserCallback = (User?) -> ()
-typealias TweetsCallback = ([Tweet]?) -> ()
+//enum Handler {
+//    case accountCallback((ACAccount?) -> ())
+//    case userCallback((User?) ->())
+//    case tweetsCallback(([Tweet]?) -> ())
+//}
+
+enum HandlerType {
+    case accountCallback(ACAccount?)
+    case userCallback(User?)
+    case tweetsCallback([Tweet]?)
+}
+
+typealias CompletionHandlerType = (HandlerType) -> ()
+
+
+//typealias accCallback = CompletionHandler.Type.accountCallback?
+//typealias UserCallback = (User?) -> ()
+//typealias TweetsCallback = ([Tweet]?) -> ()
 
 class API {
     static let shared = API() // instantiate a singleton instance of this class
@@ -20,30 +35,29 @@ class API {
     var account : ACAccount?
     
     // Get Twitter account from device, using the Accounts Framework
-    private func login(callback: @escaping AccountCallback) {
+    private func login(callback: @escaping CompletionHandlerType) {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
         
         accountStore.requestAccessToAccounts(with: accountType, options: nil) { (success, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
-                callback(nil)
+                callback(HandlerType.accountCallback(nil))
                 return
             }
             
             if success {
                 if let account = accountStore.accounts(with: accountType).first as? ACAccount {
-                    callback(account)
-                }
+             callback(HandlerType.accountCallback(account))                }
             } else {
                 print("The user did not allow access to their account.")
-                callback(nil)
+                callback(HandlerType.accountCallback(nil))
             }
         }
     }
     
     // Get Twitter account with the OAuth - validating with Twitter
-    private func getOAuthUser(callback: @escaping UserCallback) {
+    private func getOAuthUser(callback: @escaping CompletionHandlerType) {
         let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
@@ -53,28 +67,28 @@ class API {
             request.perform(handler: { (data, response, error) in
                 if let error = error {
                     print ("Error: \(error.localizedDescription)")
-                    callback(nil)
+                    HandlerType.userCallback(nil)
                     return
                 }
                 
-                guard let response = response else { callback(nil); return }
-                guard let data = data else { callback(nil); return }
+                guard let response = response else { HandlerType.userCallback(nil); return }
+                guard let data = data else { HandlerType.userCallback(nil); return }
                 
                 switch response.statusCode {
                 case 200...299:
                     // danger zone below - to be refactored in lab assignment
                     let user = JSONParser.userFrom(data: data)
-                    callback(user)
+                    HandlerType.userCallback(user)
                 default:
                     print("Error: response came back with statusCode: \(response.statusCode)")
-                    callback(nil)
+                    HandlerType.userCallback(nil)
                 }
             })
         }
     }
     
     // Get status for user's home timeline
-    private func updateTimeline(callback: @escaping TweetsCallback) {
+    private func updateTimeline(callback: @escaping CompletionHandlerType) {
         let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
@@ -85,18 +99,18 @@ class API {
                 
                 if let error = error {
                     print ("Error: Unable to request user's home timeline - \(error.localizedDescription)")
-                    callback(nil)
+                    callback(HandlerType.tweetsCallback(nil))
                     return
                 }
                 
-                guard let response = response else { callback(nil); return }
-                guard let data = data else { callback(nil); return }
+                guard let response = response else { callback(HandlerType.tweetsCallback(nil)); return }
+                guard let data = data else { callback(HandlerType.tweetsCallback(nil)); return }
                 
                 switch response.statusCode {
                 case 200...299:
                     JSONParser.tweetsFrom(data: data, callback: { (success, tweets) in
                         if success {
-                            callback(tweets)
+                            callback(HandlerType.tweetsCallback(tweets))
                         }
                     })
                 case 403:
@@ -107,7 +121,7 @@ class API {
                     print("A server side error has occurred: \(response.statusCode).\n", "You may wish to try again later.")
                 default:
                     print("Error in response from server: \(response.statusCode)")
-                    callback(nil)
+                    callback(HandlerType.tweetsCallback(nil))
                 }
                 
             })
@@ -116,7 +130,7 @@ class API {
     }
     
     // Get tweets - this public method will provide access to the private methods above
-    func getTweets(callback: @escaping TweetsCallback) {
+    func getTweets(callback: @escaping CompletionHandlerType) {
         if self.account == nil {
             login(callback: { (account) in
                 if let account = account {
