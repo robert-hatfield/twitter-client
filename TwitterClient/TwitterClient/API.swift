@@ -67,21 +67,21 @@ class API {
             request.perform(handler: { (data, response, error) in
                 if let error = error {
                     print ("Error: \(error.localizedDescription)")
-                    HandlerType.userCallback(nil)
+                    callback(HandlerType.userCallback(nil))
                     return
                 }
                 
-                guard let response = response else { HandlerType.userCallback(nil); return }
-                guard let data = data else { HandlerType.userCallback(nil); return }
+                guard let response = response else { callback(HandlerType.userCallback(nil)); return }
+                guard let data = data else { callback(HandlerType.userCallback(nil)); return }
                 
                 switch response.statusCode {
                 case 200...299:
                     // danger zone below - to be refactored in lab assignment
                     let user = JSONParser.userFrom(data: data)
-                    HandlerType.userCallback(user)
+                    callback(HandlerType.userCallback(user))
                 default:
                     print("Error: response came back with statusCode: \(response.statusCode)")
-                    HandlerType.userCallback(nil)
+                    callback(HandlerType.userCallback(nil))
                 }
             })
         }
@@ -115,10 +115,13 @@ class API {
                     })
                 case 403:
                     print("Error 403: Forbidden. Please verify that your password is entered correctly in Settings > Twitter")
+                    callback(HandlerType.tweetsCallback(nil))
                 case 400...499:
                     print("A client side error has occurred: \(response.statusCode).\n", "Please verify user settings and that your request is properly formatted.")
+                    callback(HandlerType.tweetsCallback(nil))
                 case 500...599:
                     print("A server side error has occurred: \(response.statusCode).\n", "You may wish to try again later.")
+                    callback(HandlerType.tweetsCallback(nil))
                 default:
                     print("Error in response from server: \(response.statusCode)")
                     callback(HandlerType.tweetsCallback(nil))
@@ -132,13 +135,17 @@ class API {
     // Get tweets - this public method will provide access to the private methods above
     func getTweets(callback: @escaping CompletionHandlerType) {
         if self.account == nil {
-            login(callback: { (account) in
-                if let account = account {
+            login(callback: { (HandlerType) in
+                switch (HandlerType) {
+                case .accountCallback(let account):
+                
                     self.account = account
-                    self.updateTimeline(callback: { (tweets) in
-                        callback(tweets)
-                    })
-                }
+                    self.updateTimeline(callback: callback)
+                    break
+                default:
+                    break
+                    }
+                
             })
         } else {
             self.updateTimeline(callback: callback)

@@ -28,9 +28,15 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func updateTimeline() {
-        API.shared.getTweets { (tweets) in
+        API.shared.getTweets { (HandlerType) in
             OperationQueue.main.addOperation {
-                self.allTweets = tweets ?? [] // nil coalescing
+                switch HandlerType {
+                case .tweetsCallback(let tweets):
+                    self.allTweets = tweets ?? [] // nil coalescing
+                    break
+                default:
+                    break
+                }
             }
         }
     }
