@@ -10,6 +10,7 @@
 		6227446B1E806D6A005C12F9 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227446A1E806D6A005C12F9 /* JSONParser.swift */; };
 		6227446D1E80780B005C12F9 /* HomeTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227446C1E80780B005C12F9 /* HomeTimelineViewController.swift */; };
 		622744721E819E94005C12F9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744711E819E94005C12F9 /* API.swift */; };
+		622744921E82F9E6005C12F9 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744911E82F9E6005C12F9 /* TweetCell.swift */; };
 		6297ED8A1E803F55006C564D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297ED891E803F55006C564D /* AppDelegate.swift */; };
 		6297ED8F1E803F55006C564D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6297ED8D1E803F55006C564D /* Main.storyboard */; };
 		6297ED911E803F55006C564D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6297ED901E803F55006C564D /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		6227446A1E806D6A005C12F9 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		6227446C1E80780B005C12F9 /* HomeTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTimelineViewController.swift; path = ../HomeTimelineViewController.swift; sourceTree = "<group>"; };
 		622744711E819E94005C12F9 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		622744911E82F9E6005C12F9 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		6297ED861E803F54006C564D /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6297ED891E803F55006C564D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6297ED8E1E803F55006C564D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				6297ED921E803F55006C564D /* LaunchScreen.storyboard */,
 				6297ED8D1E803F55006C564D /* Main.storyboard */,
+				622744911E82F9E6005C12F9 /* TweetCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6297EDA01E80540E006C564D /* User.swift in Sources */,
+				622744921E82F9E6005C12F9 /* TweetCell.swift in Sources */,
 				6227446B1E806D6A005C12F9 /* JSONParser.swift in Sources */,
 				6297ED9E1E8053EF006C564D /* Tweet.swift in Sources */,
 				6297ED8A1E803F55006C564D /* AppDelegate.swift in Sources */,

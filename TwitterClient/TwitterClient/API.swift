@@ -20,6 +20,7 @@ enum HandlerType {
     case accountCallback(ACAccount?)
     case userCallback(User?)
     case tweetsCallback([Tweet]?)
+    case oneTweetCallback(Tweet?)
 }
 
 typealias CompletionHandlerType = (HandlerType) -> ()
@@ -48,7 +49,8 @@ class API {
             
             if success {
                 if let account = accountStore.accounts(with: accountType).first as? ACAccount {
-             callback(HandlerType.accountCallback(account))                }
+                    callback(HandlerType.accountCallback(account))
+                }
             } else {
                 print("The user did not allow access to their account.")
                 callback(HandlerType.accountCallback(nil))
