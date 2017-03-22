@@ -42,7 +42,7 @@ class API {
         }
     }
     
-    // Get OAuth user using Social Framework - validating with Twitter
+    // Get Twitter account with the OAuth - validating with Twitter
     private func getOAuthUser(callback: @escaping UserCallback) {
         let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
         
@@ -63,18 +63,14 @@ class API {
                 switch response.statusCode {
                 case 200...299:
                     // danger zone below - to be refactored in lab assignment
-                    if let userJSON = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        let user = User(json: userJSON)
-                        callback(user)
-                    }
+                    let user = JSONParser.userFrom(data: data)
+                    callback(user)
                 default:
                     print("Error: response came back with statusCode: \(response.statusCode)")
                     callback(nil)
                 }
             })
         }
-        
-        
     }
     
     // Get status for user's home timeline
@@ -105,6 +101,10 @@ class API {
                     })
                 case 403:
                     print("Error 403: Forbidden. Please verify that your password is entered correctly in Settings > Twitter")
+                case 400...499:
+                    print("A client side error has occurred: \(response.statusCode).\n", "Please verify user settings and that your request is properly formatted.")
+                case 500...599:
+                    print("A server side error has occurred: \(response.statusCode).\n", "You may wish to try again later.")
                 default:
                     print("Error in response from server: \(response.statusCode)")
                     callback(nil)
