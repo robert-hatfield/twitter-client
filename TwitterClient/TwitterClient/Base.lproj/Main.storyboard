@@ -49,7 +49,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="tweetText" destination="dRU-4m-c9O" id="3oP-lY-7lU"/>
-                                            <segue destination="cSZ-b7-2bl" kind="show" id="jQc-6v-Tlz"/>
+                                            <segue destination="cSZ-b7-2bl" kind="show" identifier="showDetailSegue" id="jQc-6v-Tlz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="964" y="36.431784107946029"/>
         </scene>
-        <!--View Controller-->
+        <!--Tweet Detail View Controller-->
         <scene sceneID="pc3-Dr-Dsb">
             <objects>
-                <viewController id="cSZ-b7-2bl" sceneMemberID="viewController">
+                <viewController id="cSZ-b7-2bl" customClass="TweetDetailViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TQn-KY-KgW"/>
                         <viewControllerLayoutGuide type="bottom" id="R8H-Sl-at9"/>

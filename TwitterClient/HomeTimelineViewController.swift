@@ -34,6 +34,21 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         updateTimeline()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "showDetailSegue" {
+            if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
+                let selectedTweet = self.allTweets[selectedIndex]
+                
+                guard let destinationController = segue.destination as? TweetDetailViewController else { return }
+                
+                destinationController.tweet = selectedTweet
+            }
+        }
+        
+    }
+    
     func updateTimeline() {
         
         self.activityIndicator.startAnimating()
