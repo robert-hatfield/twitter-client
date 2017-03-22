@@ -13,6 +13,8 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var allTweets = [Tweet]() {
         didSet {
             self.tableView.reloadData()
@@ -31,13 +33,18 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func updateTimeline() {
+        
+        self.activityIndicator.startAnimating()
+        
         API.shared.getTweets { (HandlerType) in
             OperationQueue.main.addOperation {
                 switch HandlerType {
                 case .tweetsCallback(let tweets):
                     self.allTweets = tweets ?? [] // nil coalescing
+                    self.activityIndicator.stopAnimating()
                     break
                 default:
+                    self.activityIndicator.stopAnimating()
                     break
                 }
             }
