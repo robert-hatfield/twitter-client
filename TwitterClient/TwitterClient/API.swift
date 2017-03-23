@@ -99,10 +99,10 @@ class API {
     }
     
     // Get status for user's home timeline
-    private func updateTimeline(callback: @escaping CompletionHandlerType) {
-        let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+    private func updateTimeline(url: String, callback: @escaping CompletionHandlerType) {
+//        let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
         
-        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
+        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: URL(string: url), parameters: nil) {
             
             request.account = self.account
             
@@ -151,16 +151,26 @@ class API {
                 case .accountCallback(let account):
                     self.account = account
                     self.getOAuthUser()
-                    self.updateTimeline(callback: callback)
+                    self.updateTimeline(url: "https://api.twitter.com/1.1/statuses/home_timeline.json", callback: { (tweets) in
+                        callback(tweets)
+                    })
                     break
                 default:
                     break
-                    }
+                }
                 
             })
         } else {
-            self.updateTimeline(callback: callback)
+            self.updateTimeline(url: "https://api.twitter.com/1.1/statuses/home_timeline.json", callback: { (tweets) in
+                callback(tweets)
+            })
+        }
+        
+        func getTweetsFor(_ user: String, callback: @escaping CompletionHandlerType) {
+            
+            let urlString = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(user)"
+            
+            self.updateTimeline(url: urlString, callback: callback)
         }
     }
-    
 }
