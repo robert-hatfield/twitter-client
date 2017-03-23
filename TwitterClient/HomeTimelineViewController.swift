@@ -20,7 +20,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
             self.tableView.reloadData()
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +31,9 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        
         updateTimeline()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,6 +47,12 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
                 
                 destinationController.tweet = selectedTweet
             }
+        }
+        
+        if segue.identifier == "showUserProfileSegue" {
+            guard let destinationController = segue.destination as? UserProfileViewController else { return }
+            
+            destinationController.user = API.shared.userProfile
         }
         
     }

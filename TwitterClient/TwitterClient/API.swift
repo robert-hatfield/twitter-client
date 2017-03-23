@@ -34,6 +34,7 @@ class API {
     static let shared = API() // instantiate a singleton instance of this class
     
     var account : ACAccount?
+    var userProfile : User?
     
     // Get Twitter account from device, using the Accounts Framework
     private func login(callback: @escaping CompletionHandlerType) {
@@ -59,7 +60,7 @@ class API {
     }
     
     // Get Twitter account with the OAuth - validating with Twitter
-    private func getOAuthUser(callback: @escaping CompletionHandlerType) {
+    func getOAuthUser() -> () {
         let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
@@ -69,21 +70,29 @@ class API {
             request.perform(handler: { (data, response, error) in
                 if let error = error {
                     print ("Error: \(error.localizedDescription)")
-                    callback(HandlerType.userCallback(nil))
+//                    callback(HandlerType.userCallback(nil))
+                    self.userProfile = nil
                     return
                 }
                 
-                guard let response = response else { callback(HandlerType.userCallback(nil)); return }
-                guard let data = data else { callback(HandlerType.userCallback(nil)); return }
+                guard let response = response else {
+//                    callback(HandlerType.userCallback(nil))
+                    self.userProfile = nil
+                    return }
+                guard let data = data else {
+//                    callback(HandlerType.userCallback(nil))
+                    self.userProfile = nil
+                    return }
                 
                 switch response.statusCode {
                 case 200...299:
                     // danger zone below - to be refactored in lab assignment
-                    let user = JSONParser.userFrom(data: data)
-                    callback(HandlerType.userCallback(user))
+                    self.userProfile = JSONParser.userFrom(data: data)
+//                    callback(HandlerType.userCallback(user))
                 default:
                     print("Error: response came back with statusCode: \(response.statusCode)")
-                    callback(HandlerType.userCallback(nil))
+//                    callback(HandlerType.userCallback(nil))
+                    self.userProfile = nil
                 }
             })
         }
@@ -140,8 +149,8 @@ class API {
             login(callback: { (HandlerType) in
                 switch (HandlerType) {
                 case .accountCallback(let account):
-                
                     self.account = account
+                    self.getOAuthUser()
                     self.updateTimeline(callback: callback)
                     break
                 default:

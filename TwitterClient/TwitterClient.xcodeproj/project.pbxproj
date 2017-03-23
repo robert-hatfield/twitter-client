@@ -13,6 +13,8 @@
 		622744921E82F9E6005C12F9 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744911E82F9E6005C12F9 /* TweetCell.swift */; };
 		622744941E8318F4005C12F9 /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744931E8318F4005C12F9 /* TweetDetailViewController.swift */; };
 		622744961E837024005C12F9 /* TweetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744951E837024005C12F9 /* TweetDetail.swift */; };
+		622744981E837CC4005C12F9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744971E837CC4005C12F9 /* UserProfile.swift */; };
+		6227449A1E837CDC005C12F9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622744991E837CDC005C12F9 /* UserProfileViewController.swift */; };
 		6297ED8A1E803F55006C564D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297ED891E803F55006C564D /* AppDelegate.swift */; };
 		6297ED8F1E803F55006C564D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6297ED8D1E803F55006C564D /* Main.storyboard */; };
 		6297ED911E803F55006C564D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6297ED901E803F55006C564D /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		622744911E82F9E6005C12F9 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		622744931E8318F4005C12F9 /* TweetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailViewController.swift; sourceTree = "<group>"; };
 		622744951E837024005C12F9 /* TweetDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetail.swift; sourceTree = "<group>"; };
+		622744971E837CC4005C12F9 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		622744991E837CDC005C12F9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		6297ED861E803F54006C564D /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6297ED891E803F55006C564D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6297ED8E1E803F55006C564D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 				6297ED921E803F55006C564D /* LaunchScreen.storyboard */,
 				6297ED8D1E803F55006C564D /* Main.storyboard */,
 				622744911E82F9E6005C12F9 /* TweetCell.swift */,
+				622744971E837CC4005C12F9 /* UserProfile.swift */,
 				622744951E837024005C12F9 /* TweetDetail.swift */,
 			);
 			name = View;
@@ -77,6 +82,7 @@
 		622744701E808B5C005C12F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				622744991E837CDC005C12F9 /* UserProfileViewController.swift */,
 				622744931E8318F4005C12F9 /* TweetDetailViewController.swift */,
 				6227446C1E80780B005C12F9 /* HomeTimelineViewController.swift */,
 				6297ED891E803F55006C564D /* AppDelegate.swift */,
@@ -188,12 +194,14 @@
 			files = (
 				6297EDA01E80540E006C564D /* User.swift in Sources */,
 				622744921E82F9E6005C12F9 /* TweetCell.swift in Sources */,
+				622744981E837CC4005C12F9 /* UserProfile.swift in Sources */,
 				6227446B1E806D6A005C12F9 /* JSONParser.swift in Sources */,
 				6297ED9E1E8053EF006C564D /* Tweet.swift in Sources */,
 				6297ED8A1E803F55006C564D /* AppDelegate.swift in Sources */,
 				622744961E837024005C12F9 /* TweetDetail.swift in Sources */,
 				622744941E8318F4005C12F9 /* TweetDetailViewController.swift in Sources */,
 				622744721E819E94005C12F9 /* API.swift in Sources */,
+				6227449A1E837CDC005C12F9 /* UserProfileViewController.swift in Sources */,
 				6227446D1E80780B005C12F9 /* HomeTimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
