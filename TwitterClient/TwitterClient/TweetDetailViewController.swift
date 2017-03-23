@@ -15,6 +15,7 @@ class TweetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if tweet.isARetweet{ print("RETWEET" ) }
         print(self.tweet.user?.name ?? "Unknown")
         print(self.tweet.text)
         
