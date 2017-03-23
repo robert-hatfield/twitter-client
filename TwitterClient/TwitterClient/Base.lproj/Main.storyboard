@@ -53,13 +53,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="tweet.user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhV-S9-bYf">
-                                                    <rect key="frame" x="8" y="8" width="68" height="6.5"/>
+                                                    <rect key="frame" x="8" y="8" width="68" height="7"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" preservesSuperviewLayoutMargins="YES" text="Tweet text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRU-4m-c9O">
-                                                    <rect key="frame" x="8" y="18.5" width="359" height="21"/>
+                                                    <rect key="frame" x="8" y="19" width="359" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -115,6 +115,7 @@
         <!--Tweet Detail View Controller-->
         <scene sceneID="pc3-Dr-Dsb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2H9-VF-hEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="cSZ-b7-2bl" customClass="TweetDetailViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TQn-KY-KgW"/>
@@ -125,19 +126,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-IW-gl0">
-                                <rect key="frame" x="16" y="28" width="343" height="17"/>
+                                <rect key="frame" x="16" y="72" width="343" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tug-lY-vGh">
-                                <rect key="frame" x="16" y="53" width="343" height="21"/>
+                                <rect key="frame" x="16" y="97" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retweet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-kX-yQk">
-                                <rect key="frame" x="299" y="28" width="60" height="16"/>
+                                <rect key="frame" x="299" y="72" width="60" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="qmY-sQ-EFa"/>
                                 </constraints>
@@ -167,7 +168,6 @@
                         <outlet property="tweetDetailView" destination="psH-SX-n1n" id="wOh-GL-xsV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2H9-VF-hEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1672.8" y="35.532233883058474"/>
         </scene>
@@ -190,7 +190,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebd-uj-r3j">
-                                <rect key="frame" x="71.5" y="72" width="232" height="232"/>
+                                <rect key="frame" x="72" y="72" width="232" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ebd-uj-r3j" secondAttribute="height" id="alQ-q2-KLa"/>
                                 </constraints>
