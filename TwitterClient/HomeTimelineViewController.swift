@@ -78,6 +78,8 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         
         if let cell = cell as? TweetCell {
             cell.tweetText.text = allTweets[indexPath.row].text
+            let user = allTweets[indexPath.row].user ?? nil
+            cell.userName.text = user?.name
         }
         
         return cell
