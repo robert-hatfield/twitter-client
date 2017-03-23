@@ -25,12 +25,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxF-w8-NAi">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="M47-S2-f0U">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suspiciousDog" translatesAutoresizingMaskIntoConstraints="NO" id="TjD-eN-TNl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="TjD-eN-TNl" secondAttribute="bottom" id="GfX-SG-b7i"/>
+                                        <constraint firstItem="TjD-eN-TNl" firstAttribute="leading" secondItem="M47-S2-f0U" secondAttribute="leading" id="HvD-Sa-5vi"/>
+                                        <constraint firstAttribute="trailing" secondItem="TjD-eN-TNl" secondAttribute="trailing" id="qz5-PU-tCt"/>
+                                        <constraint firstItem="TjD-eN-TNl" firstAttribute="top" secondItem="M47-S2-f0U" secondAttribute="top" id="sM2-5a-S7a"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="UbJ-WN-yeh" customClass="TweetCell" customModule="TwitterClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="105" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UbJ-WN-yeh" id="jIE-ur-sPG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -237,4 +253,7 @@
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="suspiciousDog" width="360" height="360"/>
+    </resources>
 </document>
