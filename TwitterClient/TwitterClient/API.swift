@@ -60,7 +60,7 @@ class API {
     }
     
     // Get Twitter account with the OAuth - validating with Twitter
-    func getOAuthUser() -> () {
+    func getOAuthUser(callback: @escaping CompletionHandlerType) {
         let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
@@ -150,7 +150,7 @@ class API {
                 switch (HandlerType) {
                 case .accountCallback(let account):
                     self.account = account
-                    self.getOAuthUser()
+                    self.getOAuthUser(callback: callback)
                     self.updateTimeline(url: "https://api.twitter.com/1.1/statuses/home_timeline.json", callback: { (tweets) in
                         callback(tweets)
                     })

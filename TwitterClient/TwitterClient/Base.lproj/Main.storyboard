@@ -105,6 +105,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="6vU-c1-nYt" id="68j-jh-dyL"/>
                         <outlet property="tableView" destination="jxF-w8-NAi" id="o9j-ku-cpa"/>
+                        <segue destination="cSZ-b7-2bl" kind="show" identifier="TweetDetailViewController" id="M7W-pr-a4s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,19 +125,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-IW-gl0">
-                                <rect key="frame" x="16" y="72" width="343" height="17"/>
+                                <rect key="frame" x="16" y="28" width="343" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tug-lY-vGh">
-                                <rect key="frame" x="16" y="97" width="343" height="21"/>
+                                <rect key="frame" x="16" y="53" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retweet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-kX-yQk">
-                                <rect key="frame" x="299" y="72" width="60" height="16"/>
+                                <rect key="frame" x="299" y="28" width="60" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="qmY-sQ-EFa"/>
                                 </constraints>

@@ -45,7 +45,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if segue.identifier == "showDetailSegue" {
+        if segue.identifier == TweetDetailViewController.identifier {
             if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                 let selectedTweet = self.allTweets[selectedIndex]
                 
@@ -86,18 +86,16 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TweetNibCell.identifier, for: indexPath) as! TweetNibCell
         
-        if let cell = cell as? TweetCell {
-            cell.tweetText.text = allTweets[indexPath.row].text
-            let user = allTweets[indexPath.row].user ?? nil
-            cell.userName.text = user?.name
-        }
+        let tweet = self.allTweets[indexPath.row]
+        cell.tweet = tweet
         
         return cell
-    }
+        
+        }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: TweetDetailViewController.identifier, sender: nil)
+    }
 }
