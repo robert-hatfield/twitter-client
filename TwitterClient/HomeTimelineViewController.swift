@@ -50,9 +50,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         if segue.identifier == "showUserProfileSegue" {
-            guard let destinationController = segue.destination as? UserProfileViewController else { return }
-            
-            destinationController.user = API.shared.userProfile
+            print("Entering user profile view")
         }
         
     }

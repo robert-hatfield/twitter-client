@@ -12,12 +12,12 @@ class UserProfileViewController: UIViewController {
 
     @IBOutlet var userProfileView: UserProfileView!
     
-    var user : User!
+    let user = API.shared.userProfile
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userProfileView.userName.text = user.name
-        userProfileView.userLocation.text = user.location
+        userProfileView.userName.text = user?.name
+        userProfileView.userLocation.text = user?.location
 //        userProfileView.userImage
     }
 
