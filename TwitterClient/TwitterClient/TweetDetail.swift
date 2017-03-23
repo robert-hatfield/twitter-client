@@ -1,5 +1,5 @@
 //
-//  TweetCell.swift
+//  TweetDetail.swift
 //  TwitterClient
 //
 //  Created by Robert Hatfield on 3/22/17.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+class TweetDetailView: UIView {
+    @IBOutlet weak var tweetUserName: UILabel!
     @IBOutlet weak var tweetText: UILabel!
-    @IBOutlet weak var userName: UILabel!
-  
-//    var profileImageURL: String?
-
+    @IBOutlet weak var retweetStatus: UILabel!
 }

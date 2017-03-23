@@ -10,15 +10,15 @@ import UIKit
 
 class TweetDetailViewController: UIViewController {
     
+    @IBOutlet var tweetDetailView: TweetDetailView!
+    
     var tweet : Tweet!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if tweet.isARetweet{ print("RETWEET" ) }
-        print(self.tweet.user?.name ?? "Unknown")
-        print(self.tweet.text)
-        
+        tweetDetailView.tweetUserName.text = tweet.user?.name ?? "Unknown"
+        tweetDetailView.tweetText.text = tweet.text
+        if tweet.isARetweet { tweetDetailView.retweetStatus.isHidden = false }
     }
 
 
