@@ -28,6 +28,10 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        let tweetNib = UINib(nibName: "TweetNibCell", bundle: nil)
+        self.tableView.register(tweetNib, forCellReuseIdentifier: TweetNibCell.identifier)
+        
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -35,6 +39,8 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         updateTimeline()
         
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

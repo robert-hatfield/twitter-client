@@ -78,7 +78,6 @@
                                         <connections>
                                             <outlet property="tweetText" destination="dRU-4m-c9O" id="3oP-lY-7lU"/>
                                             <outlet property="userName" destination="dhV-S9-bYf" id="jQ6-oI-mGo"/>
-                                            <segue destination="cSZ-b7-2bl" kind="show" identifier="showDetailSegue" id="jQc-6v-Tlz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
