@@ -177,6 +177,8 @@
                             <outlet property="userImageView" destination="0bd-oh-ZYC" id="ykC-XY-y7S"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="retweetStatus" destination="hr3-kX-yQk" id="1zQ-Dr-cXg"/>
                         <outlet property="screenNameLabel" destination="R05-j6-c1p" id="Ntn-0Q-zq6"/>
@@ -188,6 +190,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2H9-VF-hEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1672.8" y="35.532233883058474"/>
+        </scene>
+        <!--User Timeline View Controller-->
+        <scene sceneID="LHF-GQ-b58">
+            <objects>
+                <viewController id="cUQ-sX-hb1" customClass="UserTimelineViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PVv-db-6aF"/>
+                        <viewControllerLayoutGuide type="bottom" id="z4I-jx-UUq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cUE-OK-qgY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V4y-Su-m4i">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="V4y-Su-m4i" id="e8B-xr-Ytf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wm-30-zy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="83p-fe-rnX">
