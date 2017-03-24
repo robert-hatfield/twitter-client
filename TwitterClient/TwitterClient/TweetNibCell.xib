@@ -20,34 +20,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vXn-5d-K0F">
-                        <rect key="frame" x="11" y="29" width="48" height="48"/>
+                        <rect key="frame" x="11" y="16" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="2ZV-UX-WW6"/>
                             <constraint firstAttribute="height" constant="48" id="JW9-9a-hlT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBz-w6-8Wo" userLabel="Name Label">
-                        <rect key="frame" x="75" y="29" width="45" height="21"/>
+                        <rect key="frame" x="67" y="16" width="45" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBk-VR-QCF">
-                        <rect key="frame" x="67" y="58" width="517" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBk-VR-QCF">
+                        <rect key="frame" x="67" y="45" width="517" height="77"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="oBk-VR-QCF" firstAttribute="top" secondItem="KBz-w6-8Wo" secondAttribute="bottom" constant="8" id="2J8-79-xeA"/>
                     <constraint firstItem="vXn-5d-K0F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="8CV-Gt-S14"/>
+                    <constraint firstItem="KBz-w6-8Wo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="BCs-eN-0i3"/>
+                    <constraint firstItem="KBz-w6-8Wo" firstAttribute="leading" secondItem="vXn-5d-K0F" secondAttribute="trailing" constant="8" id="GGW-oc-X4d"/>
                     <constraint firstItem="oBk-VR-QCF" firstAttribute="leading" secondItem="vXn-5d-K0F" secondAttribute="trailing" constant="8" id="GfQ-ZU-Y2A"/>
-                    <constraint firstItem="KBz-w6-8Wo" firstAttribute="leading" secondItem="vXn-5d-K0F" secondAttribute="trailing" constant="16" id="Giw-ni-v9M"/>
-                    <constraint firstItem="vXn-5d-K0F" firstAttribute="top" secondItem="KBz-w6-8Wo" secondAttribute="top" id="LYp-0z-oBS"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="oBk-VR-QCF" secondAttribute="bottom" constant="43.5" id="ndA-aS-qvP"/>
+                    <constraint firstItem="vXn-5d-K0F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="n1x-hs-y9O"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="oBk-VR-QCF" secondAttribute="bottom" id="ndA-aS-qvP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="oBk-VR-QCF" secondAttribute="trailing" id="oip-n2-tu1"/>
-                    <constraint firstItem="KBz-w6-8Wo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="21" id="uZc-bd-Fj7"/>
-                    <constraint firstItem="oBk-VR-QCF" firstAttribute="top" secondItem="KBz-w6-8Wo" secondAttribute="bottom" constant="8" id="yYt-Ah-kyH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

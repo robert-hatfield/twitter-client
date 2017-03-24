@@ -11,7 +11,9 @@ import UIKit
 class UserTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    var allTweets = [Tweet]() {
+    var screenName : String!
+    
+    var allTweets = [Tweet]() { // reloads tableview once network call to fetch tweets is completed
         didSet {
             self.tableView.reloadData()
         }
@@ -23,17 +25,41 @@ class UserTimelineViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        // datasource protocol requirements
+        // how many rows to display
+        // what to display in rows
+        
         let tweetNib = UINib(nibName: "TweetNibCell", bundle: nil)
         self.tableView.register(tweetNib, forCellReuseIdentifier: TweetNibCell.identifier)
         
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
 
-        // Do any additional setup after loading the view.
+        API.shared.getTweetsFor(screenName, callback: { (HandlerType) in OperationQueue.main.addOperation {
+                switch HandlerType {
+                    case .tweetsCallback(let tweets):
+                    self.allTweets = tweets ?? []
+                    break
+                    default:
+                    break
+                }
+            }
+        })
     }
 
     func tableView(_ tableView:UITableView, numberOfRowsInSection section: Int) -> Int { return allTweets.count }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TweetNibCell.identifier, for: indexPath) as! TweetNibCell
+        
+        let tweet = self.allTweets[indexPath.row]
+        cell.tweet = tweet
+        return cell
+    }
 
+    func updateTimeline() {
+     // this is broken
+    }
     
 
     /*

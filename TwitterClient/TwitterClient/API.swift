@@ -166,11 +166,13 @@ class API {
             })
         }
         
-        func getTweetsFor(_ user: String, callback: @escaping CompletionHandlerType) {
-            
-            let urlString = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(user)"
-            
-            self.updateTimeline(url: urlString, callback: callback)
-        }
+        
+    }
+    
+    func getTweetsFor(_ user: String, callback: @escaping CompletionHandlerType) {
+        
+        let urlString = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(user)"
+        
+        self.updateTimeline(url: urlString, callback: { (tweets) in callback(tweets) } )
     }
 }

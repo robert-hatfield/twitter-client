@@ -24,9 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxF-w8-NAi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxF-w8-NAi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="M47-S2-f0U">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
@@ -90,9 +89,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6vU-c1-nYt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1px-J3-PZG"/>
+                            <constraint firstItem="jxF-w8-NAi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="5xf-mP-skb"/>
                             <constraint firstAttribute="trailing" secondItem="6vU-c1-nYt" secondAttribute="trailing" id="7Po-Jy-UPa"/>
                             <constraint firstItem="6vU-c1-nYt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JGR-k4-IGp"/>
+                            <constraint firstItem="jxF-w8-NAi" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="XMG-WV-oo7"/>
+                            <constraint firstItem="jxF-w8-NAi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="h5f-OC-p4N"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6vU-c1-nYt" secondAttribute="bottom" id="o9p-v7-FZt"/>
+                            <constraint firstItem="jxF-w8-NAi" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zs7-Gf-fg2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="boe-CC-prR">
@@ -158,7 +161,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzZ-Wo-Jky">
                                 <rect key="frame" x="16" y="72" width="343" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="cUQ-sX-hb1" kind="show" identifier="UserTimelineViewController" id="6A0-lV-HGR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,6 +195,7 @@
                         <outlet property="tweetNameLabel" destination="OOl-IW-gl0" id="WO9-ya-a6C"/>
                         <outlet property="tweetText" destination="Tug-lY-vGh" id="03c-ot-yfj"/>
                         <outlet property="userImageView" destination="0bd-oh-ZYC" id="Zii-fS-1me"/>
+                        <outlet property="viewUserButton" destination="uzZ-Wo-Jky" id="G3D-ba-iPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2H9-VF-hEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
