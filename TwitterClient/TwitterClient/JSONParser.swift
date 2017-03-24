@@ -43,11 +43,6 @@ class JSONParser {
         }
     }
     
-    /*
-     if let userDictionary = json["user"] as? [String: Any]{
-     self.user = User(json: userDictionary)
-     }
- */
     class func userFrom(data: Data) -> User? {
         do {
             if let userJSON = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] {

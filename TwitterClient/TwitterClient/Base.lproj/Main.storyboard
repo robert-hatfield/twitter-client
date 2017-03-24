@@ -131,8 +131,8 @@
                                     <constraint firstAttribute="height" constant="73" id="Exr-ko-fl7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-IW-gl0">
-                                <rect key="frame" x="245.5" y="72" width="113.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweetNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-IW-gl0" userLabel="Tweet Name Label">
+                                <rect key="frame" x="97" y="72" width="108" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -143,8 +143,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="screenName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R05-j6-c1p">
+                                <rect key="frame" x="97" y="97" width="262" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retweet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-kX-yQk">
-                                <rect key="frame" x="309.5" y="132.5" width="49.5" height="16"/>
+                                <rect key="frame" x="309" y="129" width="49.5" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -153,26 +159,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hr3-kX-yQk" secondAttribute="trailing" id="Ah7-vw-VKf"/>
+                            <constraint firstItem="OOl-IW-gl0" firstAttribute="leading" secondItem="0bd-oh-ZYC" secondAttribute="trailing" constant="8" id="C0E-tw-iaR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0bd-oh-ZYC" secondAttribute="leading" id="D7Z-tI-bhs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OOl-IW-gl0" secondAttribute="trailing" id="IIN-1p-uIV"/>
+                            <constraint firstItem="Tug-lY-vGh" firstAttribute="top" secondItem="hr3-kX-yQk" secondAttribute="bottom" constant="8" id="Eql-5m-bjT"/>
                             <constraint firstItem="Tug-lY-vGh" firstAttribute="leading" secondItem="psH-SX-n1n" secondAttribute="leadingMargin" id="Kp6-M3-78Z"/>
                             <constraint firstItem="0bd-oh-ZYC" firstAttribute="top" secondItem="TQn-KY-KgW" secondAttribute="bottom" constant="8" id="LJY-yv-80O"/>
-                            <constraint firstItem="Tug-lY-vGh" firstAttribute="top" secondItem="hr3-kX-yQk" secondAttribute="bottom" constant="4.5" id="fg6-Td-75j"/>
-                            <constraint firstItem="hr3-kX-yQk" firstAttribute="baseline" secondItem="0bd-oh-ZYC" secondAttribute="baseline" id="h2j-Ur-wEH"/>
+                            <constraint firstItem="Tug-lY-vGh" firstAttribute="top" secondItem="0bd-oh-ZYC" secondAttribute="bottom" constant="8" id="cMi-fK-Zda"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R05-j6-c1p" secondAttribute="trailing" id="dGc-FY-3rO"/>
+                            <constraint firstItem="R05-j6-c1p" firstAttribute="leading" secondItem="0bd-oh-ZYC" secondAttribute="trailing" constant="8" id="gOV-v5-j52"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tug-lY-vGh" secondAttribute="trailing" id="n0m-zJ-exX"/>
                             <constraint firstItem="OOl-IW-gl0" firstAttribute="top" secondItem="TQn-KY-KgW" secondAttribute="bottom" constant="8" id="uYR-bx-zRa"/>
+                            <constraint firstItem="R05-j6-c1p" firstAttribute="top" secondItem="OOl-IW-gl0" secondAttribute="bottom" constant="8" id="yFU-UI-MRX"/>
                         </constraints>
                         <connections>
                             <outlet property="retweetStatus" destination="hr3-kX-yQk" id="Kjl-vL-kvg"/>
                             <outlet property="tweetText" destination="Tug-lY-vGh" id="DyG-8U-3tn"/>
-                            <outlet property="tweetUserName" destination="OOl-IW-gl0" id="uju-oK-XzX"/>
                             <outlet property="userImageView" destination="0bd-oh-ZYC" id="ykC-XY-y7S"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="retweetStatus" destination="hr3-kX-yQk" id="1zQ-Dr-cXg"/>
+                        <outlet property="screenNameLabel" destination="R05-j6-c1p" id="Ntn-0Q-zq6"/>
+                        <outlet property="tweetNameLabel" destination="OOl-IW-gl0" id="WO9-ya-a6C"/>
                         <outlet property="tweetText" destination="Tug-lY-vGh" id="03c-ot-yfj"/>
-                        <outlet property="tweetUserName" destination="OOl-IW-gl0" id="D5i-b8-gaU"/>
                         <outlet property="userImageView" destination="0bd-oh-ZYC" id="Zii-fS-1me"/>
                     </connections>
                 </viewController>
