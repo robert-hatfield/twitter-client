@@ -12,4 +12,5 @@ class TweetDetailView: UIView {
     @IBOutlet weak var tweetUserName: UILabel!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var retweetStatus: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
 }

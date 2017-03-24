@@ -166,10 +166,14 @@
                             <outlet property="retweetStatus" destination="hr3-kX-yQk" id="Kjl-vL-kvg"/>
                             <outlet property="tweetText" destination="Tug-lY-vGh" id="DyG-8U-3tn"/>
                             <outlet property="tweetUserName" destination="OOl-IW-gl0" id="uju-oK-XzX"/>
+                            <outlet property="userImageView" destination="0bd-oh-ZYC" id="ykC-XY-y7S"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="tweetDetailView" destination="psH-SX-n1n" id="wOh-GL-xsV"/>
+                        <outlet property="retweetStatus" destination="hr3-kX-yQk" id="1zQ-Dr-cXg"/>
+                        <outlet property="tweetText" destination="Tug-lY-vGh" id="03c-ot-yfj"/>
+                        <outlet property="tweetUserName" destination="OOl-IW-gl0" id="D5i-b8-gaU"/>
+                        <outlet property="userImageView" destination="0bd-oh-ZYC" id="Zii-fS-1me"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2H9-VF-hEV" userLabel="First Responder" sceneMemberID="firstResponder"/>

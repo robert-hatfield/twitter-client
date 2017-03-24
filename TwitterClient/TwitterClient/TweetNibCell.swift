@@ -12,13 +12,14 @@ class TweetNibCell: UITableViewCell {
 
     @IBOutlet weak var userImageView: UIImageView!
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+
     @IBOutlet weak var tweetLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
             self.tweetLabel.text = tweet.text
-            self.usernameLabel.text = tweet.user?.name ?? "Unknown user"
+            self.nameLabel.text = tweet.user?.name ?? "Unknown user"
             
             if let user = tweet.user {
                 UIImage.fetchImageWith(user.profileImageURL) { (image) in
