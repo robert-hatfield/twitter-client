@@ -10,39 +10,92 @@ import UIKit
 
 class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var datasource = [Tweet]()
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var allTweets = [Tweet]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "My Timeline"
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        JSONParser.tweetsFrom(data: JSONParser.sampleJSONData) { (success, tweets) in
-            if(success) {
-                guard let tweets = tweets else { fatalError("Tweets came back as nil.") }
-                datasource = tweets // assigning this in a single operation to improve Big O performance
-                for tweet in tweets {
-                    print(tweet.text)
+        let tweetNib = UINib(nibName: "TweetNibCell", bundle: nil)
+        self.tableView.register(tweetNib, forCellReuseIdentifier: TweetNibCell.identifier)
+        
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        updateTimeline()
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == TweetDetailViewController.identifier {
+            if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
+                let selectedTweet = self.allTweets[selectedIndex]
+                
+                guard let destinationController = segue.destination as? TweetDetailViewController else { return }
+                
+                destinationController.tweet = selectedTweet
+            }
+        }
+        
+        if segue.identifier == "showUserProfileSegue" {
+            print("Entering user profile view")
+        }
+        
+    }
+    
+    func updateTimeline() {
+        
+        self.activityIndicator.startAnimating()
+        
+        API.shared.getTweets { (HandlerType) in
+            OperationQueue.main.addOperation {
+                switch HandlerType {
+                case .tweetsCallback(let tweets):
+                    self.allTweets = tweets ?? [] // nil coalescing
+                    self.activityIndicator.stopAnimating()
+                    break
+                default:
+                    self.activityIndicator.stopAnimating()
+                    break
                 }
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource.count
+        return allTweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = datasource[indexPath.row].text
-        cell.detailTextLabel?.text = datasource[indexPath.row].user?.name
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: TweetNibCell.identifier, for: indexPath) as! TweetNibCell
+        
+        let tweet = self.allTweets[indexPath.row]
+        cell.tweet = tweet
+        
         return cell
-    }
+        
+        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        self.performSegue(withIdentifier: TweetDetailViewController.identifier, sender: nil)
     }
 }
