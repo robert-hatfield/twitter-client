@@ -18,20 +18,7 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         userProfileView.userName.text = user?.name
         userProfileView.userLocation.text = user?.location
-//        userProfileView.userImage
+        UIImage.fetchImageWith(user!.profileImageURL, callback: { (image) in
+            self.userProfileView.userImage.image = image } )
+        }
     }
-
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

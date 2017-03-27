@@ -281,6 +281,7 @@
                             <constraint firstItem="Rtv-PI-YmB" firstAttribute="leading" secondItem="fre-s8-Hfu" secondAttribute="leadingMargin" id="x1b-DK-dRk"/>
                         </constraints>
                         <connections>
+                            <outlet property="userImage" destination="ebd-uj-r3j" id="RhP-EX-18v"/>
                             <outlet property="userLocation" destination="Rtv-PI-YmB" id="TMP-aI-wWr"/>
                             <outlet property="userName" destination="JBF-Lp-qeL" id="nhX-eq-uq3"/>
                         </connections>
